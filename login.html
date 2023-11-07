@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iniciar Sesión - Colegio ABC</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="login-container">
-        <div class="login-logo">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.1tlgOX6GJ41fJn2PUbr2dgHaJQ%26pid%3DApi&f=1&ipt=c52823d6bdc10c08e8173cc4a6fd4518b899636ec4e305e7efc67ae530ff3d90&ipo=images" alt="Logo del Colegio ABC">
+      <div class="login-logo">
+        <img
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.1tlgOX6GJ41fJn2PUbr2dgHaJQ%26pid%3DApi&f=1&ipt=c52823d6bdc10c08e8173cc4a6fd4518b899636ec4e305e7efc67ae530ff3d90&ipo=images"
+          alt="Logo del Colegio ABC"
+        />
+      </div>
+      <h1>Iniciar Sesión</h1>
+      <form class="login-form" action="/login" method="post">
+        <div class="form-group">
+          <label for="username">Usuario:</label>
+          <input type="text" id="username" name="username" required />
         </div>
-        <h1>Iniciar Sesión</h1>
-        <form class="login-form" action="/login" method="post">
-            <div class="form-group">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit">Entrar</button>
-            </div>
-        </form>
+        <div class="form-group">
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div class="form-group">
+          <button type="submit">Entrar</button>
+        </div>
+      </form>
     </div>
-
-</body>
+  </body>
 </html>
