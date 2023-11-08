@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Carrera = require("../model/carrera.model")
 
-router.get("/carrera/obtener", async (req, res) => {
+router.get("/obtener", async (req, res) => {
     try {
         const carreras = await Carrera.findAll()
         res.json(carreras)
@@ -11,7 +11,7 @@ router.get("/carrera/obtener", async (req, res) => {
 });
 
 
-router.post("/carrera/guardar", async (req, res) => {
+router.post("/guardar", async (req, res) => {
     const carrera = await Carrera.create({
         nombre_carrera: req.body.nombre_carrera
     });
@@ -22,7 +22,7 @@ router.post("/carrera/guardar", async (req, res) => {
     });
 });
 
-router.put("/carrera/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     try {
         const { id } = req.params;
         const { nombre_carrera } = req.body;
@@ -41,7 +41,7 @@ router.put("/carrera/:id", async (req, res) => {
     }
 });
 
-router.delete("/carrera/eliminar/:Id_Carrera", async (req, res) => {
+router.delete("/eliminar/:Id_Carrera", async (req, res) => {
     try {
         const { Id_Carrera } = req.params;
         const result = await Carrera.destroy({

@@ -1,6 +1,9 @@
 const express = require("express");
 const morgan = require("morgan")
-const router = require("../router/carrera.router")
+
+const carreraRouter = require("../router/carrera.router")
+const gradoAcademicoRouter = require("../router/gradoA.router");
+
 const app = express();
 
 
@@ -12,6 +15,7 @@ app.get("/", (req, res) => {
     res.send("Hola amigos");
 });
 
-app.use("/api/v1", router)
+app.use("/api/v1/carrera", carreraRouter);
+app.use("/api/v1/gradoAcademico", gradoAcademicoRouter);
 
 module.exports = app;
