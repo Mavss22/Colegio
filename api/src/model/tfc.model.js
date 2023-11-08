@@ -30,13 +30,13 @@ TFC.init({
 
 module.exports = TFC;
 
-async function testConnection() {
-    try {
-        await sequelize.authenticate();
-        console.log("Todo correcto");
-    } catch (error) {
-        console.error("No todo correcto ", error);
-    }
-}
+// async function testConnection() {
+//     try {
+//         await sequelize.authenticate();
+//         console.log("Todo correcto");
+//     } catch (error) {
+//         console.error("No todo correcto ", error);
+//     }
+// }
 
-testConnection();
+// testConnection();
