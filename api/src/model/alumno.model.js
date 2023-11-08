@@ -5,19 +5,22 @@ const sequelize = new Sequelize('bd_col', 'root', '0804', {
     port: 3307
 });
 
-class Profesor extends Model { }
 
-Profesor.init({
-    Id_Profesor: {
+class Alumno extends Model { }
+
+
+Alumno.init({
+    Id_Alumno: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
-    Id_Grado: {
+    Id_Carrera: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
-            model: 'GradoAcademico', 
-            key: 'Id_Grado', 
+            model: 'Carrera',
+            key: 'Id_Carrera', 
         }
     },
     Nombre: {
@@ -28,16 +31,15 @@ Profesor.init({
         type: DataTypes.STRING,
         allowNull: false
     },
-    Carnet: {
+    Carné: {
         type: DataTypes.STRING,
         unique: true
     },
     Fecha_Nac: {
         type: DataTypes.DATE
     },
-    DPI: {
-        type: DataTypes.BIGINT,
-        unique: true
+    Dpi: {
+        type: DataTypes.INTEGER
     },
     Telefono: {
         type: DataTypes.INTEGER
@@ -47,21 +49,20 @@ Profesor.init({
     }
 }, {
     sequelize,
-    modelName: 'Profesor',
-    tableName: 'Profesor',
+    modelName: 'Alumno',
+    tableName: 'Alumno',
     timestamps: false,
 });
 
-module.exports = Profesor;
+module.exports = Alumno;
 
+async function testConnection() {
+    try {
+        await sequelize.authenticate();
+        console.log("Todo correcto");
+    } catch (error) {
+        console.error("No todo correcto ", error);
+    }
+}
 
-// async function testConnection() {
-//     try {
-//         await sequelize.authenticate();
-//         console.log("Todo correcto");
-//     } catch (error) {
-//         console.error("No todo correcto ", error);
-//     }
-// }
-
-// testConnection();
+testConnection();
