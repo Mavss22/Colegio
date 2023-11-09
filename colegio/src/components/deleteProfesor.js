@@ -40,7 +40,7 @@ const DeleteProfesor = () => {
                     const response = await axios.delete(`http://localhost:3001/api/v1/profesor/eliminar/${selectedProfesor.Id_Profesor}`);
                     console.log(response);
                     showToast('success', 'Eliminación Exitosa', 'El profesor ha sido eliminado con éxito');
-                    setSelectedProfesor(null); // Borramos la selección
+                    setSelectedProfesor(null); 
                 } catch (error) {
                     console.error('Error al eliminar profesor:', error);
                     showToast('error', 'Error', 'Error al eliminar profesor');
@@ -48,7 +48,7 @@ const DeleteProfesor = () => {
             },
             reject: () => {
                 showToast('warn', 'Eliminación Cancelada', 'Se canceló la eliminación del profesor');
-                setSelectedProfesor(null); // Borramos la selección
+                setSelectedProfesor(null); 
             }
         });
     };
