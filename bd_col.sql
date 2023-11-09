@@ -286,3 +286,17 @@ INSERT INTO Detalle_Grupo_Investigacion (Id_Grupo, Id_Estudiante) VALUES (9, 9);
 INSERT INTO Detalle_Grupo_Investigacion (Id_Grupo, Id_Estudiante) VALUES (10, 10);
 
 SELECT * FROM detalle_grupo_investigacion ;
+
+-- Creación de la tabla "usuarios"
+DROP TABLE USUARIOS;
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(255) NOT NULL,
+    hash_contrasena VARCHAR(64) NOT NULL 
+);
+
+-- Inserciones de ejemplo
+INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario1', SHA2('contrasena1', 256));
+INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario2', SHA2('contrasena2', 256));
+
+SELECT * FROM usuarios;
