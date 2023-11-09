@@ -32,12 +32,10 @@ export default function LoginComponent() {
 
             axios.post('http://localhost:3001/api/v1/usuarios/login', userData)
                 .then(response => {
-                    console.log('Inicio de sesión exitoso', response.data);
                     localStorage.setItem('username', username);
-                    navigate('/dashboard');
+                    navigate('/Dashboard');
                 })
                 .catch(error => {
-                    console.error('Error de inicio de sesión', error);
                     showToast('error', 'Error', 'Usuario o contraseña incorrecta');
                 });
         }
