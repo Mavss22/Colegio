@@ -1,0 +1,173 @@
+import React from 'react'; 
+import AppRoutes from './Routes'
+import { Menubar } from 'primereact/menubar';
+import 'primeicons/primeicons.css';
+import 'primereact/resources/themes/lara-light-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+
+
+
+const Dashboard = () => {
+    const items = [
+        {
+            label: 'Proyecto Final',
+            icon: 'pi pi-fw pi-file',
+            items: [
+                {
+                    label: 'Nuevo',
+                    icon: 'pi pi-fw pi-plus',
+                },
+                {
+                    label: 'Asociar Proyecto',
+                    icon: 'pi pi-fw pi-link'
+                }
+            ]
+        },
+        {
+            label: 'Profesores',
+            icon: 'pi pi-fw pi-user',
+            items: [
+                {
+                    label: 'Crear',
+                    icon: 'pi pi-fw pi-plus'
+                },
+                {
+                    label: 'Obtener',
+                    icon: 'pi pi-fw pi-eye',
+                    items: [
+                      {
+                        label: 'Individual',
+                        icon: 'pi pi-fw pi-user'
+                      },
+                      {
+                        label: 'Por Lista',
+                        icon: 'pi pi-fw pi-bars'
+                      }
+                    ]
+                },
+                {
+                    label: 'Actualizar',
+                    icon: 'pi pi-fw pi-refresh'
+                },
+                {
+                    label: 'Eliminar',
+                    icon: 'pi pi-fw pi-trash'
+                },
+
+            ]
+        },
+        {
+            label: 'Alumnos',
+            icon: 'pi pi-fw pi-user',
+            items: [
+                {
+                    label: 'Crear',
+                    icon: 'pi pi-fw pi-user-plus',
+
+                },
+                {
+                    label: 'Buscar',
+                    icon: 'pi pi-fw pi-eye',
+                    items: [
+                        {
+                            label: 'Individual',
+                            icon: 'pi pi-fw pi-user'
+                        },
+                        {
+                            icon: 'pi pi-fw pi-bars',
+                            label: 'Por Lista'
+                        }
+                    ]
+                },
+                {
+                  label: 'Actualizar',
+                  icon: 'pi pi-fw pi-refresh'
+                },
+
+                {
+                  label: 'Eliminar',
+                  icon: 'pi pi-fw pi-user-minus'
+              }
+            ]
+        },
+        {
+            label: 'Profesor-Alumnos',
+            icon: 'pi pi-fw pi-users',
+            items: [
+                {
+                    label: 'Asociar Alumno-profesor',
+                    icon: 'pi pi-fw pi-link'
+                },
+                {
+                    label: 'Actualizar asociacion Alumno-profesor',
+                    icon: 'pi pi-fw pi-link'
+                },
+                {
+                  label: 'Buscar Alumnos asociados a profesor',
+                  icon: ' pi pi-fw pi-search'
+                }
+            ]
+        },
+        {
+          label: 'Comité',
+          icon: 'pi pi-fw pi-sitemap',
+          items: [
+            {
+                label: 'Crear',
+                icon: 'pi pi-fw pi-user-plus',
+
+            },
+            {
+                label: 'Buscar',
+                icon: 'pi pi-fw pi-users',
+                items: [
+                    {
+                        label: 'Individual',
+                        icon: 'pi pi-fw pi-user'
+                    }
+                ]
+            },
+            {
+              label: 'Actualizar',
+              icon: 'pi pi-fw pi-refresh'
+            },
+
+            {
+              label: 'Eliminar',
+              icon: 'pi pi-fw pi-user-minus'
+          }
+        ]
+
+        },
+        {
+          label: 'Profesor-Comité',
+          icon: 'pi pi-fw pi-user-plus',
+          items : [
+            {
+              label: 'Asociar Profesor-Comité',
+              icon: 'pi pi-fw pi-link'
+            },
+            {
+              label:'Actualizar Profesores-Comité',
+              icon : 'pi pi-fw pi-link'
+            },
+            {
+              label: 'Buscar Profesores-Comité',
+              icon: 'pi pi-fw pi-search'
+            }
+          ]
+        },
+        {
+            label: 'Quit',
+            icon: 'pi pi-fw pi-power-off'
+        }
+    ];
+
+  return (
+    <div>
+    <Menubar model={items} />
+    </div>
+  );
+};
+
+export default Dashboard;
