@@ -23,6 +23,10 @@ const Navbar = () => {
     navigate('/searchP');
   };
 
+  const associationProject = () => {
+    navigate('/AssociationProject');
+  };
+
 
   const items = [
     {
@@ -36,7 +40,8 @@ const Navbar = () => {
         },
         {
           label: 'Asociar Proyecto',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command: associationProject
         }
       ]
     },
