@@ -40,6 +40,11 @@ export default function LoginComponent() {
                 });
         }
     };
+    
+    const handleSignup = () =>{
+
+        navigate('/Signup');
+    }
 
     const showToast = (severity, summary, detail) => {
         toast.current.show({ severity, summary, detail });
@@ -81,7 +86,7 @@ export default function LoginComponent() {
                     </Divider>
                 </div>
                 <div className="w-full md:w-5 flex align-items-center justify-content-center py-5">
-                    <Button label="Crear" icon="pi pi-user-plus" severity="success" className="w-10rem"></Button>
+                    <Button label="Crear" icon="pi pi-user-plus" severity="success" className="w-10rem" onClick={handleSignup}></Button>
                 </div>
             </div>
         </div>
