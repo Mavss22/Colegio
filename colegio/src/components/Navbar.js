@@ -27,6 +27,10 @@ const Navbar = () => {
     navigate('/AssociationProject');
   };
 
+  const updateProfesor = () => {
+    navigate('/updateProfesor');
+  };
+
 
   const items = [
     {
@@ -71,7 +75,8 @@ const Navbar = () => {
         },
         {
           label: 'Actualizar',
-          icon: 'pi pi-fw pi-refresh'
+          icon: 'pi pi-fw pi-refresh',
+          command:updateProfesor
         },
         {
           label: 'Eliminar',

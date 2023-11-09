@@ -44,7 +44,7 @@ router.post('/guardar', async (req, res) => {
 
 
 router.delete('/eliminar/:Id_Profesor', async (req, res) => {
-    const { Id_Profesor } = req.params; 
+    const { Id_Profesor } = req.params;
 
     try {
         const cantidadEliminada = await Profesor.destroy({
@@ -60,5 +60,33 @@ router.delete('/eliminar/:Id_Profesor', async (req, res) => {
         return res.status(500).json({ message: error.message });
     }
 });
+
+router.put('/actualizar/:Id_Profesor', async (req, res) => {
+    try {
+        const { Id_Profesor } = req.params;
+        const { Id_Grado, Nombre, Apellido, Carnet, Fecha_Nac, DPI, Telefono, Dirección } = req.body;
+
+        const profesor = await Profesor.findByPk(Id_Profesor);
+        if (!profesor) {
+            return res.status(404).json({ message: "Profesor no encontrado" });
+        }
+
+        await profesor.update({
+            Id_Grado,
+            Nombre,
+            Apellido,
+            Carnet,
+            Fecha_Nac,
+            DPI,
+            Telefono,
+            Dirección
+        });
+
+        return res.status(200).json({ message: "Profesor actualizado con éxito" });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+});
+
 
 module.exports = router;
