@@ -10,6 +10,10 @@ const Navbar = () => {
     navigate('/');
   };
 
+  const handleNPF = () => {
+    navigate('/NewPF');
+  };
+
 
   const items = [
     {
@@ -19,6 +23,7 @@ const Navbar = () => {
         {
           label: 'Nuevo',
           icon: 'pi pi-fw pi-plus',
+          command: handleNPF
         },
         {
           label: 'Asociar Proyecto',
