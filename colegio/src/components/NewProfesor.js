@@ -131,7 +131,7 @@ const NewProfesor = () => {
                             value={dpi}
                             onChange={(e) => {
                                 const inputValue = e.target.value;
-                                if (inputValue.length <= 10) {
+                                if (inputValue.length <= 9) {
                                     setDpi(inputValue);
                                 }
                             }}
@@ -146,7 +146,7 @@ const NewProfesor = () => {
                             value={telefono}
                             onChange={(e) => {
                                 const inputValue = e.target.value;
-                                if (inputValue.length <= 8) {
+                                if (inputValue.length <=  8) {
                                     setTelefono(inputValue);
                                 }
                             }}
