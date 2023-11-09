@@ -10,6 +10,7 @@ const HistorialRouter = require("../router/historialAsesoria.router")
 const lugarEvRouter = require("../router/lugarEvaluacion.router");
 const usuarioRouter = require("../router/usuarios.router");
 const comiteRouter = require("../router/comite.router");
+const detalleComiteRouter = require("../router/dellateComite.router");
 
 const app = express();
 
@@ -31,5 +32,6 @@ app.use("/api/v1/historialAsesoria", HistorialRouter);
 app.use("/api/v1/lugarEvaluacion", lugarEvRouter);
 app.use("/api/v1/usuarios", usuarioRouter);
 app.use("/api/v1/comites", comiteRouter);
+app.use("/api/v1/detalleComite",detalleComiteRouter);
 
 module.exports = app;
