@@ -19,7 +19,6 @@ router.post("/login", async (req, res) => {
         const usuarioEncontrado = await Usuario.findOne({ where: { usuario } });
         if (usuarioEncontrado) {
             const contrasenaValida = bcrypt.compareSync(contrasena, usuarioEncontrado.contrasena);
-            console.log(contrasenaValida);
             if (contrasenaValida === true) {
                 res.status(200).json({ message: "Contraseña correcta" });
             } else {
