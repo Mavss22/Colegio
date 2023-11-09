@@ -296,12 +296,7 @@ CREATE TABLE usuarios (
 );
 
 -- Inserciones de ejemplo
-INSERT INTO usuarios (usuario, contrasena) VALUES ('usuario1', SHA2('contrasena1', 256));
-INSERT INTO usuarios (usuario, contrasena) VALUES ('usuario2', SHA2('contrasena2', 256));
-
-ALTER TABLE usuarios
-CHANGE COLUMN hash_contrasena contrasena VARCHAR(64) NOT NULL;
-
-
+INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario1', '$2b$10$V3Vg.kjkF1OYRD8j6rS9u.TC5Gk9wNasYSVmbo7qBgjdbJcmhpYcu');
+INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario2', '$2b$10$FBhtbKcWIjWS69UJCbN9TOtKLyKRboP6a7Jw6yIi5NP7onSGnG5F');
 
 SELECT * FROM usuarios;
