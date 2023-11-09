@@ -1,11 +1,16 @@
-
 import React from 'react'; 
 import { Divider } from 'primereact/divider';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginDemo() {
+export default function LoginComponent() {
+    const navigate = useNavigate();
+
+    const handleLogin = () => {
+        navigate('/dashboard');
+    };
+
     return (
         <div className="card">
             <div className="flex flex-column md:flex-row">
@@ -18,7 +23,7 @@ export default function LoginDemo() {
                         <label className="w-6rem">Password</label>
                         <InputText id="password" type="password" className="w-12rem" />
                     </div>
-                    <Button label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
+                    <Button label="Login" icon="pi pi-user" className="w-10rem mx-auto" onClick={handleLogin}></Button>
                 </div>
                 <div className="w-full md:w-2">
                     <Divider layout="vertical" className="hidden md:flex">
@@ -34,15 +39,4 @@ export default function LoginDemo() {
             </div>
         </div>
     )
-}
-     
-export default function LoginDemoComponent(){
-    const navigate = useNavigate();
-
-    const handleLogin = () => {
-
-        navigate('/dashboard');
-    };
-
-    
 }
