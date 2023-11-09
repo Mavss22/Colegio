@@ -8,6 +8,7 @@ const alumnoRouter = require("../router/alumno.router");
 const tfcRouter = require("../router/tfc.router");
 const HistorialRouter = require("../router/historialAsesoria.router")
 const lugarEvRouter = require("../router/lugarEvaluacion.router");
+const usuarioRouter = require("../router/usuarios.router");
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use("/api/v1/alumno", alumnoRouter);
 app.use("/api/v1/tfc", tfcRouter);
 app.use("/api/v1/historialAsesoria", HistorialRouter);
 app.use("/api/v1/lugarEvaluacion", lugarEvRouter);
+app.use("/api/v1/usuarios", usuarioRouter)
 
 module.exports = app;
