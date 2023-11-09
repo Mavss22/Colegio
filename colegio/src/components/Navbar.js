@@ -10,6 +10,19 @@ const Navbar = () => {
     navigate('/');
   };
 
+  const handleNPF = () => {
+    navigate('/NewPF');
+  };
+
+
+  const handleNP = () => {
+    navigate('/NewP');
+  };
+
+  const searchP = () => {
+    navigate('/searchP');
+  };
+
 
   const items = [
     {
@@ -19,6 +32,7 @@ const Navbar = () => {
         {
           label: 'Nuevo',
           icon: 'pi pi-fw pi-plus',
+          command: handleNPF
         },
         {
           label: 'Asociar Proyecto',
@@ -32,7 +46,8 @@ const Navbar = () => {
       items: [
         {
           label: 'Crear',
-          icon: 'pi pi-fw pi-plus'
+          icon: 'pi pi-fw pi-plus',
+          command: handleNP
         },
         {
           label: 'Obtener',
@@ -40,7 +55,8 @@ const Navbar = () => {
           items: [
             {
               label: 'Individual',
-              icon: 'pi pi-fw pi-user'
+              icon: 'pi pi-fw pi-user',
+              command: searchP
             },
             {
               label: 'Por Lista',
