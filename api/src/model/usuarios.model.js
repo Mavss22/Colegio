@@ -22,7 +22,7 @@ Usuario.init(
             unique: true,
         },
         contrasena: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(500),
             allowNull: false,
             set(value) {
                 const hash = bcrypt.hashSync(value, 10);
