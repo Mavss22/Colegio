@@ -1,4 +1,3 @@
-// Routes.js
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from '../components/Dashboard';
@@ -7,7 +6,9 @@ import SignupComponent from '../components/Signup';
 import NewProjectFinal from '../components/NewProjectFinal';
 import NewProfesor from '../components/NewProfesor';
 import SearchProfesor from '../components/SearchProfesor';
-
+import AssociationProject from '../components/associationProject';
+import UpdateProfesor from '../components/updateProfesor'; 
+import DeleteProfesor from '../components/deleteProfesor';
 const AppRoutes = () => {
   return (
     <Routes>
@@ -17,7 +18,10 @@ const AppRoutes = () => {
       <Route path="/NewPF" element={<NewProjectFinal />} />
       <Route path="/NewP" element={<NewProfesor />} />
       <Route path="/SearchP" element={<SearchProfesor />} />
-      <Route
+      <Route path="/AssociationProject" element={<AssociationProject />}/>
+      <Route path="/updateProfesor" element={<UpdateProfesor />} />
+      <Route path="/deleteProfesor"element={<DeleteProfesor />} />
+      <Route 
         path="*"
         element={<Navigate to="/" replace />}
       />

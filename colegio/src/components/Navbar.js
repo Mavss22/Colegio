@@ -23,6 +23,18 @@ const Navbar = () => {
     navigate('/searchP');
   };
 
+  const associationProject = () => {
+    navigate('/AssociationProject');
+  };
+
+  const updateProfesor = () => {
+    navigate('/updateProfesor');
+  };
+
+    const deleteProfesor = () => {
+    navigate('/deleteProfesor');
+  };
+
 
   const items = [
     {
@@ -36,7 +48,8 @@ const Navbar = () => {
         },
         {
           label: 'Asociar Proyecto',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command: associationProject
         }
       ]
     },
@@ -66,11 +79,13 @@ const Navbar = () => {
         },
         {
           label: 'Actualizar',
-          icon: 'pi pi-fw pi-refresh'
+          icon: 'pi pi-fw pi-refresh',
+          command:updateProfesor
         },
         {
           label: 'Eliminar',
-          icon: 'pi pi-fw pi-trash'
+          icon: 'pi pi-fw pi-trash',
+          command:deleteProfesor
         },
 
       ]
