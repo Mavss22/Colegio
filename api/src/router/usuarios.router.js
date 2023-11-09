@@ -39,7 +39,7 @@ router.post('/encriptar', async (req, res) => {
     const { contrasena } = req.body;
 
     try {
-        const saltRounds = 10; // Número de rondas de sal (ajustable según tus necesidades)
+        const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(contrasena, saltRounds);
         res.json({ hashedPassword });
     } catch (error) {
