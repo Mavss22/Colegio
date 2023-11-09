@@ -12,6 +12,7 @@ const usuarioRouter = require("../router/usuarios.router");
 const comiteRouter = require("../router/comite.router");
 const detalleComiteRouter = require("../router/dellateComite.router");
 const grupoInvestigacionRouter = require("../router/grupoInvestigacion.router");
+const detalleGrupoInvestigacionRuter = require("../router/detalleGrupoI.router");
 
 const app = express();
 
@@ -35,5 +36,6 @@ app.use("/api/v1/usuarios", usuarioRouter);
 app.use("/api/v1/comites", comiteRouter);
 app.use("/api/v1/detalleComite",detalleComiteRouter);
 app.use("/api/v1/grupoInvestigacion", grupoInvestigacionRouter);
+app.use("/api/v1/detalleGI",detalleGrupoInvestigacionRuter);
 
 module.exports = app;
