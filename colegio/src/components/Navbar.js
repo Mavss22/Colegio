@@ -31,6 +31,10 @@ const Navbar = () => {
     navigate('/updateProfesor');
   };
 
+    const deleteProfesor = () => {
+    navigate('/deleteProfesor');
+  };
+
 
   const items = [
     {
@@ -80,7 +84,8 @@ const Navbar = () => {
         },
         {
           label: 'Eliminar',
-          icon: 'pi pi-fw pi-trash'
+          icon: 'pi pi-fw pi-trash',
+          command:deleteProfesor
         },
 
       ]
