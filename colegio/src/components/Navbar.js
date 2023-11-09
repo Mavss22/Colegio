@@ -19,6 +19,10 @@ const Navbar = () => {
     navigate('/NewP');
   };
 
+  const searchP = () => {
+    navigate('/searchP');
+  };
+
 
   const items = [
     {
@@ -51,7 +55,8 @@ const Navbar = () => {
           items: [
             {
               label: 'Individual',
-              icon: 'pi pi-fw pi-user'
+              icon: 'pi pi-fw pi-user',
+              command: searchP
             },
             {
               label: 'Por Lista',
