@@ -1,5 +1,5 @@
 import React from 'react'; 
-import AppRoutes from './Routes'
+import AppRoutes from '../Routes/Routes'
 import { Menubar } from 'primereact/menubar';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-blue/theme.css';
