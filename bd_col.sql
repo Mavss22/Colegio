@@ -292,7 +292,7 @@ DROP TABLE USUARIOS;
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(255) NOT NULL,
-    hash_contrasena VARCHAR(64) NOT NULL 
+    contrasena VARCHAR(64) NOT NULL 
 );
 
 -- Inserciones de ejemplo
