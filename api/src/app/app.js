@@ -9,6 +9,7 @@ const tfcRouter = require("../router/tfc.router");
 const HistorialRouter = require("../router/historialAsesoria.router")
 const lugarEvRouter = require("../router/lugarEvaluacion.router");
 const usuarioRouter = require("../router/usuarios.router");
+const comiteRouter = require("../router/comite.router");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use("/api/v1/alumno", alumnoRouter);
 app.use("/api/v1/tfc", tfcRouter);
 app.use("/api/v1/historialAsesoria", HistorialRouter);
 app.use("/api/v1/lugarEvaluacion", lugarEvRouter);
-app.use("/api/v1/usuarios", usuarioRouter)
+app.use("/api/v1/usuarios", usuarioRouter);
+app.use("/api/v1/comites", comiteRouter);
 
 module.exports = app;
