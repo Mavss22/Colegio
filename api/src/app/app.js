@@ -15,8 +15,9 @@ const grupoInvestigacionRouter = require("../router/grupoInvestigacion.router");
 const detalleGrupoInvestigacionRuter = require("../router/detalleGrupoI.router");
 
 const app = express();
+const cors = require('cors')
 
-
+app.use(cors());
 app.use(morgan("dev"))
 
 app.use(express.json());

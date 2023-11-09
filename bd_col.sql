@@ -292,11 +292,13 @@ DROP TABLE USUARIOS;
 CREATE TABLE usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     usuario VARCHAR(255) NOT NULL,
-    contrasena VARCHAR(64) NOT NULL 
+    contrasena VARCHAR(255) NOT NULL 
 );
 
 -- Inserciones de ejemplo
-INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario1', '$2b$10$V3Vg.kjkF1OYRD8j6rS9u.TC5Gk9wNasYSVmbo7qBgjdbJcmhpYcu');
-INSERT INTO usuarios (usuario, hash_contrasena) VALUES ('usuario2', '$2b$10$FBhtbKcWIjWS69UJCbN9TOtKLyKRboP6a7Jw6yIi5NP7onSGnG5F');
+INSERT INTO usuarios (usuario, contrasena) VALUES ('usuario1', '$2b$10$V3Vg.kjkF1OYRD8j6rS9u.TC5Gk9wNasYSVmbo7qBgjdbJcmhpYcu');
+INSERT INTO usuarios (usuario, contrasena) VALUES ('usuario2', '$2b$10$FBhtbKcWIjWS69UJCbN9TOtKLyKRboP6a7Jw6yIi5NP7onSGnG5F');
+
+
 
 SELECT * FROM usuarios;

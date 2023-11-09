@@ -1,173 +1,38 @@
-import React from 'react'; 
-import AppRoutes from '../Routes/Routes'
-import { Menubar } from 'primereact/menubar';
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/lara-light-blue/theme.css';
-import 'primereact/resources/primereact.min.css';
+import React, { useEffect, useState } from 'react';
+import Navbar from './Navbar';
+import './Dashboard.css';
 
+export default function Dashboard() {
+    const [username, setUsername] = useState('');
 
-
-const Dashboard = () => {
-    const items = [
-        {
-            label: 'Proyecto Final',
-            icon: 'pi pi-fw pi-file',
-            items: [
-                {
-                    label: 'Nuevo',
-                    icon: 'pi pi-fw pi-plus',
-                },
-                {
-                    label: 'Asociar Proyecto',
-                    icon: 'pi pi-fw pi-link'
-                }
-            ]
-        },
-        {
-            label: 'Profesores',
-            icon: 'pi pi-fw pi-user',
-            items: [
-                {
-                    label: 'Crear',
-                    icon: 'pi pi-fw pi-plus'
-                },
-                {
-                    label: 'Obtener',
-                    icon: 'pi pi-fw pi-eye',
-                    items: [
-                      {
-                        label: 'Individual',
-                        icon: 'pi pi-fw pi-user'
-                      },
-                      {
-                        label: 'Por Lista',
-                        icon: 'pi pi-fw pi-bars'
-                      }
-                    ]
-                },
-                {
-                    label: 'Actualizar',
-                    icon: 'pi pi-fw pi-refresh'
-                },
-                {
-                    label: 'Eliminar',
-                    icon: 'pi pi-fw pi-trash'
-                },
-
-            ]
-        },
-        {
-            label: 'Alumnos',
-            icon: 'pi pi-fw pi-user',
-            items: [
-                {
-                    label: 'Crear',
-                    icon: 'pi pi-fw pi-user-plus',
-
-                },
-                {
-                    label: 'Buscar',
-                    icon: 'pi pi-fw pi-eye',
-                    items: [
-                        {
-                            label: 'Individual',
-                            icon: 'pi pi-fw pi-user'
-                        },
-                        {
-                            icon: 'pi pi-fw pi-bars',
-                            label: 'Por Lista'
-                        }
-                    ]
-                },
-                {
-                  label: 'Actualizar',
-                  icon: 'pi pi-fw pi-refresh'
-                },
-
-                {
-                  label: 'Eliminar',
-                  icon: 'pi pi-fw pi-user-minus'
-              }
-            ]
-        },
-        {
-            label: 'Profesor-Alumnos',
-            icon: 'pi pi-fw pi-users',
-            items: [
-                {
-                    label: 'Asociar Alumno-profesor',
-                    icon: 'pi pi-fw pi-link'
-                },
-                {
-                    label: 'Actualizar asociacion Alumno-profesor',
-                    icon: 'pi pi-fw pi-link'
-                },
-                {
-                  label: 'Buscar Alumnos asociados a profesor',
-                  icon: ' pi pi-fw pi-search'
-                }
-            ]
-        },
-        {
-          label: 'Comité',
-          icon: 'pi pi-fw pi-sitemap',
-          items: [
-            {
-                label: 'Crear',
-                icon: 'pi pi-fw pi-user-plus',
-
-            },
-            {
-                label: 'Buscar',
-                icon: 'pi pi-fw pi-users',
-                items: [
-                    {
-                        label: 'Individual',
-                        icon: 'pi pi-fw pi-user'
-                    }
-                ]
-            },
-            {
-              label: 'Actualizar',
-              icon: 'pi pi-fw pi-refresh'
-            },
-
-            {
-              label: 'Eliminar',
-              icon: 'pi pi-fw pi-user-minus'
-          }
-        ]
-
-        },
-        {
-          label: 'Profesor-Comité',
-          icon: 'pi pi-fw pi-user-plus',
-          items : [
-            {
-              label: 'Asociar Profesor-Comité',
-              icon: 'pi pi-fw pi-link'
-            },
-            {
-              label:'Actualizar Profesores-Comité',
-              icon : 'pi pi-fw pi-link'
-            },
-            {
-              label: 'Buscar Profesores-Comité',
-              icon: 'pi pi-fw pi-search'
-            }
-          ]
-        },
-        {
-            label: 'Quit',
-            icon: 'pi pi-fw pi-power-off'
+    useEffect(() => {
+        const storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            setUsername(storedUsername);
         }
-    ];
+    }, []);
 
-  return (
-    <div>
-    <Menubar model={items} />
-    </div>
-  );
-};
+    const usernameStyle = {
+        marginLeft: '2rem'
+    };
 
-export default Dashboard;
+    return (
+        <div>
+            <Navbar />
+            <div className="container mt-4">
+                <div className="row">
+                    <div className="col-md-8">
+                        <h1 className="d-inline" style={usernameStyle}>¡Bienvenido, {username}!</h1>
+                    </div>
+                    <div className="col-md-4">
+                        <img
+                            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Imagen de perfil"
+                            className="custom-responsive-image"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
