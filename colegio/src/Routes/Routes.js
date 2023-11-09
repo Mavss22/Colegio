@@ -5,6 +5,7 @@ import Dashboard from '../components/Dashboard';
 import LoginComponent from '../components/login';
 import SignupComponent from '../components/Signup';
 import NewProjectFinal from '../components/NewProjectFinal';
+import NewProfesor from '../components/NewProfesor';
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Route path="/Dashboard" element={<Dashboard />} />
       <Route path="/Signup" element={<SignupComponent />} />
       <Route path="/NewPF" element={<NewProjectFinal />} />
+      <Route path="/NewP" element={<NewProfesor />} />
       <Route
         path="*"
         element={<Navigate to="/" replace />}

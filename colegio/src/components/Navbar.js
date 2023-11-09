@@ -15,6 +15,11 @@ const Navbar = () => {
   };
 
 
+  const handleNP = () => {
+    navigate('/NewP');
+  };
+
+
   const items = [
     {
       label: 'Proyecto Final',
@@ -37,7 +42,8 @@ const Navbar = () => {
       items: [
         {
           label: 'Crear',
-          icon: 'pi pi-fw pi-plus'
+          icon: 'pi pi-fw pi-plus',
+          command: handleNP
         },
         {
           label: 'Obtener',

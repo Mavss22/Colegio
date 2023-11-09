@@ -11,6 +11,21 @@ router.get("/obtener", async (req, res) => {
     }
 });
 
+router.get("/obtener/:id", async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const gradoAcademico = await GradoAcademico.findByPk(id);
+
+        if (!gradoAcademico) {
+            return res.status(404).json({ error: "Grado Académico no encontrado" });
+        }
+
+        res.json(gradoAcademico);
+    } catch (error) {
+        return res.status(500).json({ error: "Error al obtener el Grado Académico por ID" });
+    }
+});
 
 router.post('/guardar', async (req, res) => {
     try {
