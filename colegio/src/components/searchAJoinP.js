@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
-import axios from 'axios';
-import Navbar from './Navbar';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import axios from 'axios';
+import Navbar from './Navbar';
 
 const SearchAjoinP = () => {
     const [profesores, setProfesores] = useState([]);
     const [selectedProfesor, setSelectedProfesor] = useState(null);
-    const [profesorDetalles, setProfesorDetalles] = useState(null);
-    const [gradoAcademico, setGradoAcademico] = useState(null);
+    const [detallesAlumnos, setDetallesAlumnos] = useState([]);
     const toast = useRef(null);
 
     useEffect(() => {
@@ -31,27 +30,20 @@ const SearchAjoinP = () => {
             try {
                 if (selectedProfesor) {
                     const response = await axios.get(`http://localhost:3001/api/v1/historialAsesoria/obtener/profesor/${selectedProfesor}`);
-                    setProfesorDetalles(response.data);
-                    console.log(response.data);
-                    obtenerGradoAcademico(response.data.Id_Grado);
+                    const idAlumnos = response.data.map((item) => item.Id_Alumno);
+                    const detallesAlumnos = await Promise.all(idAlumnos.map(async (idAlumno) => {
+                        const respuestaAlumno = await axios.get(`http://localhost:3001/api/v1/alumno/obtener/por/${idAlumno}`);
+                        return respuestaAlumno.data;
+                    }));
+
+                    setDetallesAlumnos(detallesAlumnos);
                 }
             } catch (error) {
-                console.error('Error al obtener detalles del profesor:', error);
             }
         };
 
         obtenerProfesorDetalle();
     }, [selectedProfesor]);
-
-    const obtenerGradoAcademico = async (idGrado) => {
-        try {
-            const response = await axios.get(`http://localhost:3001/api/v1/gradoAcademico/obtener/${idGrado}`);
-            setGradoAcademico(response.data.Nombre_Grado);
-        } catch (error) {
-            console.error('Error al obtener grado académico:', error);
-        }
-    };
-
 
     const customItemTemplate = (option) => {
         return (
@@ -87,26 +79,16 @@ const SearchAjoinP = () => {
                         </div>
                     </div>
                 </div>
-
-                {gradoAcademico && (
-                    <div className="p-mt-4">
-                        <h4>Grado Académico:</h4>
-                        <p>{gradoAcademico}</p>
-                    </div>
-                )}
-
-                {profesorDetalles && (
-                    <div className="p-mt-4">
-                        <DataTable value={[profesorDetalles]} responsive="true">
-                            <Column field="Id_Profesor" header="ID" />
-                            <Column field="Nombre" header="Nombre" />
-                            <Column field="Apellido" header="Apellido" />
-                            <Column field="Carnet" header="Carnet" />
-                            <Column field="DPI" header="DPI" />
-                            <Column field="Fecha_Nac" header="Fecha Nacimiento" />
-                            <Column field="Telefono" header="Telefono" />
-                        </DataTable>
-                    </div>
+                {detallesAlumnos.length > 0 && (
+                    <DataTable value={detallesAlumnos} paginator rows={5}>
+                        <Column field="Nombre" header="Nombre" />
+                        <Column field="Apellido" header="Apellido" />
+                        <Column field="Carné" header="Carnet" />
+                        <Column field="Fecha_Nac" header="Fecha Nacimiento" />
+                        <Column field="Dpi" header="DPI" />
+                        <Column field="Telefono" header="Telefono" />
+                        <Column field="Dirección" header="Dirección" />
+                    </DataTable>
                 )}
             </div>
         </div>
@@ -114,3 +96,4 @@ const SearchAjoinP = () => {
 };
 
 export default SearchAjoinP;
+
