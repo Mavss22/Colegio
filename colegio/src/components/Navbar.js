@@ -130,7 +130,8 @@ const Navbar = () => {
       items: [
         {
           label: 'Asociar Alumno-profesor',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command: associationProject
         },
         {
           label: 'Actualizar asociacion Alumno-profesor',
