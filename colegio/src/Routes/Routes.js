@@ -10,6 +10,7 @@ import AssociationProject from '../components/associationProject';
 import UpdateProfesor from '../components/updateProfesor'; 
 import DeleteProfesor from '../components/deleteProfesor';
 import UpdateProject from '../components/updateHistorialAseroria';
+import SearchProfesorList from '../components/SearchProfesorList';
 
 
 const AppRoutes = () => {
@@ -25,6 +26,7 @@ const AppRoutes = () => {
       <Route path="/updateProfesor" element={<UpdateProfesor />} />
       <Route path="/deleteProfesor"element={<DeleteProfesor />} />
       <Route path="updateProject" element={<UpdateProject />} />
+      <Route path="/obtenerlist" element={<SearchProfesorList/>} />
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
