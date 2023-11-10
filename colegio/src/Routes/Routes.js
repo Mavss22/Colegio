@@ -55,6 +55,9 @@ const AppRoutes = () => {
 
       <Route path="/searchPandC" element={<SearchCjoinP />} />
       <Route path="/assocPandC" element={<AssociationPC />} />
+
+
+
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
