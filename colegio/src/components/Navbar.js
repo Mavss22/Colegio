@@ -57,6 +57,46 @@ const Navbar = () => {
     navigate('/searchAlumnsJoinP');
   };
 
+  const newA = () =>{
+    navigate('/newA');
+  }
+
+  const deleteA = () =>{
+    navigate ('/deleteA');
+  }
+
+  const upA = () => {
+    navigate('/upA');
+  };
+
+  const NewComite = () =>{
+    navigate ('/NewComite');
+  }
+
+  const ComiteIndiv = () =>{
+    navigate ('/comiteIndiv');
+  }
+
+  const UpComite = () =>{
+    navigate ('/UpComite');
+  }
+
+  const DeletComite = () =>{
+    navigate ('/DeletComite');
+  }
+  
+  const assocPandC = () =>{
+    navigate ('/assocPandC');
+  }
+
+  const UpdatePandC = () =>{
+    navigate ('/UpdatePandC');
+  }
+
+  const searchPandC = () =>{
+    navigate ('/searchPandC');
+  }
+
   const items = [
     {
       label: 'Proyecto Final',
@@ -118,7 +158,8 @@ const Navbar = () => {
       items: [
         {
           label: 'Crear',
-          icon: 'pi pi-fw pi-user-plus'
+          icon: 'pi pi-fw pi-user-plus',
+          command: newA
         },
         {
           label: 'Buscar',
@@ -138,12 +179,14 @@ const Navbar = () => {
         },
         {
           label: 'Actualizar',
-          icon: 'pi pi-fw pi-refresh'
+          icon: 'pi pi-fw pi-refresh',
+          command : upA
         },
 
         {
           label: 'Eliminar',
-          icon: 'pi pi-fw pi-user-minus'
+          icon: 'pi pi-fw pi-user-minus',
+          command: deleteA
         }
       ]
     },
@@ -175,7 +218,7 @@ const Navbar = () => {
         {
           label: 'Crear',
           icon: 'pi pi-fw pi-user-plus',
-
+        command : NewComite
         },
         {
           label: 'Buscar',
@@ -183,18 +226,21 @@ const Navbar = () => {
           items: [
             {
               label: 'Individual',
-              icon: 'pi pi-fw pi-user'
+              icon: 'pi pi-fw pi-user',
+              command: ComiteIndiv
             }
           ]
         },
         {
           label: 'Actualizar',
-          icon: 'pi pi-fw pi-refresh'
+          icon: 'pi pi-fw pi-refresh',
+          command : UpComite
         },
 
         {
           label: 'Eliminar',
-          icon: 'pi pi-fw pi-user-minus'
+          icon: 'pi pi-fw pi-user-minus',
+          command : DeletComite
         }
       ]
 
@@ -205,15 +251,18 @@ const Navbar = () => {
       items: [
         {
           label: 'Asociar Profesor-Comité',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command : assocPandC
         },
         {
           label: 'Actualizar Profesores-Comité',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command : UpdatePandC
         },
         {
           label: 'Buscar Profesores-Comité',
-          icon: 'pi pi-fw pi-search'
+          icon: 'pi pi-fw pi-search',
+          command : searchPandC
         }
       ]
     },
