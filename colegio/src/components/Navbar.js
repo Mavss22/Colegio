@@ -35,6 +35,10 @@ const Navbar = () => {
     navigate('/deleteProfesor');
   };
 
+  const updateProject = () => {
+    navigate('/updateProject');
+  };
+
 
   const items = [
     {
@@ -135,7 +139,8 @@ const Navbar = () => {
         },
         {
           label: 'Actualizar asociacion Alumno-profesor',
-          icon: 'pi pi-fw pi-link'
+          icon: 'pi pi-fw pi-link',
+          command:updateProject
         },
         {
           label: 'Buscar Alumnos asociados a profesor',
