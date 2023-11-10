@@ -24,8 +24,8 @@ import SearchAlumnoList from '../components/SearchStudentList';
 
 
 
-
-
+import SearchCjoinP from '../components/searchCJoinP';
+import AssociationPC from '../components/associationPC';
 const AppRoutes = () => {
   return (
     <Routes>
@@ -53,6 +53,8 @@ const AppRoutes = () => {
 
 
 
+      <Route path="/searchPandC" element={<SearchCjoinP />} />
+      <Route path="/assocPandC" element={<AssociationPC />} />
       <Route 
         path="*"
         element={<Navigate to="/" replace />}

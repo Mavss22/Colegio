@@ -82,4 +82,42 @@ router.delete("/eliminar/:idDetalle", async (req, res) => {
     }
 });
 
+router.get("/obtener/por/idprofesor/:idProfesor", async (req, res) => {
+    try {
+        const { idProfesor } = req.params;
+
+        const detallesComite = await DetalleComite.findAll({
+            where: {
+                Id_Profesor: idProfesor
+            }
+        });
+
+        if (detallesComite.length === 0) {
+            return res.status(404).json({ message: "Detalles de comité no encontrados para el Id_Profesor proporcionado" });
+        }
+
+        res.status(200).json(detallesComite);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
+router.get("/obtener/por/:idComite", async (req, res) => {
+    try {
+        const { idComite } = req.params;
+
+        const detalles = await detalleComiteService.obtenerDetallesPorIdComite(idComite);
+
+        if (!detalles || detalles.length === 0) {
+            return res.status(404).json({ message: "Detalles del comité no encontrados" });
+        }
+
+        res.status(200).json(detalles);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 module.exports = router;

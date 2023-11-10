@@ -28,4 +28,11 @@ Comite.init({
     timestamps: false,
 });
 
+const LugarEvaluacion = require('./lugarEvaluacion.model');
+
+Comite.belongsTo(LugarEvaluacion, {
+    foreignKey: 'Id_Lugar_Evaluacion',
+    as: 'lugarEvaluacion',
+})
+
 module.exports = Comite;
