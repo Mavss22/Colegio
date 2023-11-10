@@ -43,6 +43,16 @@ const Navbar = () => {
     navigate('/obtenerlist');
   };
 
+  
+  const alumnoin = () =>{
+    navigate ('/alumnoin');
+  }
+  
+  const alumnolist = () => {
+    navigate('/alumnolist');
+  }
+
+
   const searchAJoinP = () => {
     navigate('/searchAlumnsJoinP');
   };
@@ -108,8 +118,7 @@ const Navbar = () => {
       items: [
         {
           label: 'Crear',
-          icon: 'pi pi-fw pi-user-plus',
-
+          icon: 'pi pi-fw pi-user-plus'
         },
         {
           label: 'Buscar',
@@ -117,11 +126,13 @@ const Navbar = () => {
           items: [
             {
               label: 'Individual',
-              icon: 'pi pi-fw pi-user'
+              icon: 'pi pi-fw pi-user',
+              command: alumnoin 
             },
             {
               icon: 'pi pi-fw pi-bars',
-              label: 'Por Lista'
+              label: 'Por Lista',
+              command: alumnolist
             }
           ]
         },
