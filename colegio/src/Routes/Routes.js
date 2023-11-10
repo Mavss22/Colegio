@@ -25,7 +25,7 @@ import SearchAJoinP from '../components/searchAJoinP';
 
 
 
-
+import AssociationPC from '../components/associationPC';
 const AppRoutes = () => {
   return (
     <Routes>
@@ -52,7 +52,7 @@ const AppRoutes = () => {
 
 
 
-      
+      <Route path="/assocPandC" element={<AssociationPC />} />
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
