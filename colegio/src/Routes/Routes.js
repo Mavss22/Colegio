@@ -24,7 +24,7 @@ import SearchAJoinP from '../components/searchAJoinP';
 
 
 
-
+import SearchCjoinP from '../components/searchCJoinP';
 import AssociationPC from '../components/associationPC';
 const AppRoutes = () => {
   return (
@@ -51,7 +51,7 @@ const AppRoutes = () => {
 
 
 
-
+      <Route path="/searchPandC" element={<SearchCjoinP />} />
       <Route path="/assocPandC" element={<AssociationPC />} />
       <Route 
         path="*"

@@ -10,7 +10,7 @@ router.get("/obtener", async (req, res) => {
                 {
                     model: LugarEvaluacion,
                     attributes: ["Id_Lugar", "Lugar"],
-                    as: "lugarEvaluacion", // alias para referenciar en el resultado
+                    as: "lugarEvaluacion", 
                 },
             ],
         });
@@ -24,7 +24,15 @@ router.get("/obtener/por/:idComite", async (req, res) => {
     try {
         const { idComite } = req.params;
 
-        const comite = await Comite.findByPk(idComite);
+        const comite = await Comite.findByPk(idComite, {
+            include: [
+                {
+                    model: LugarEvaluacion,
+                    attributes: ["Id_Lugar", "Lugar"],
+                    as: "lugarEvaluacion", 
+                },
+            ],
+        });
 
         if (!comite) {
             return res.status(404).json({ message: "Comité no encontrado" });
@@ -35,6 +43,7 @@ router.get("/obtener/por/:idComite", async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
 
 router.post("/guardar", async (req, res) => {
     try {
