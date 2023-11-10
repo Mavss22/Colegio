@@ -43,9 +43,6 @@ const Navbar = () => {
     navigate('/obtenerlist');
   };
 
-  const newalumno = () => {
-    navigate('/newalumno');
-  };
   
   const alumnoin = () =>{
     navigate ('/alumnoin');
@@ -55,13 +52,10 @@ const Navbar = () => {
     navigate('/alumnolist');
   }
 
-  const updatealumno = () => {
-    navigate ('/updatealumno');
-  }
 
-  const deletealumno = () => {
-    navigate ('/deletealumno');
-  }
+  const searchAJoinP = () => {
+    navigate('/searchAlumnsJoinP');
+  };
 
   const items = [
     {
@@ -124,8 +118,7 @@ const Navbar = () => {
       items: [
         {
           label: 'Crear',
-          icon: 'pi pi-fw pi-user-plus',
-          command : newalumno
+          icon: 'pi pi-fw pi-user-plus'
         },
         {
           label: 'Buscar',
@@ -145,14 +138,12 @@ const Navbar = () => {
         },
         {
           label: 'Actualizar',
-          icon: 'pi pi-fw pi-refresh',
-          command : updatealumno
+          icon: 'pi pi-fw pi-refresh'
         },
 
         {
           label: 'Eliminar',
-          icon: 'pi pi-fw pi-user-minus',
-          command : deletealumno
+          icon: 'pi pi-fw pi-user-minus'
         }
       ]
     },
@@ -172,7 +163,8 @@ const Navbar = () => {
         },
         {
           label: 'Buscar Alumnos asociados a profesor',
-          icon: ' pi pi-fw pi-search'
+          icon: ' pi pi-fw pi-search',
+          command:searchAJoinP
         }
       ]
     },
