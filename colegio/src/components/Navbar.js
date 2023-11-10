@@ -39,6 +39,10 @@ const Navbar = () => {
     navigate('/updateProject');
   };
 
+  const obtenerlist = () => {
+    navigate('/obtenerlist');
+  };
+
 
   const items = [
     {
@@ -77,7 +81,8 @@ const Navbar = () => {
             },
             {
               label: 'Por Lista',
-              icon: 'pi pi-fw pi-bars'
+              icon: 'pi pi-fw pi-bars',
+              command: obtenerlist
             }
           ]
         },
