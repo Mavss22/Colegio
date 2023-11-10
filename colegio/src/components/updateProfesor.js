@@ -80,7 +80,7 @@ const UpdateProfesor = () => {
 
         try {
             const response = await axios.put(`http://localhost:3001/api/v1/profesor/actualizar/${selectedProfesor}`, {
-                Id_Grado: selectedGradoAcademico,
+                Id_Grado: selectedGradoAcademico.Id_Grado,
                 Nombre: nombre,
                 Apellido: apellido,
                 Carnet: carnet,
