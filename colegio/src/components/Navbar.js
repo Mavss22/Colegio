@@ -43,6 +43,9 @@ const Navbar = () => {
     navigate('/obtenerlist');
   };
 
+  const searchAJoinP = () => {
+    navigate('/searchAlumnsJoinP');
+  };
 
   const items = [
     {
@@ -149,7 +152,8 @@ const Navbar = () => {
         },
         {
           label: 'Buscar Alumnos asociados a profesor',
-          icon: ' pi pi-fw pi-search'
+          icon: ' pi pi-fw pi-search',
+          command:searchAJoinP
         }
       ]
     },
