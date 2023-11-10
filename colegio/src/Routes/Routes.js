@@ -11,7 +11,7 @@ import UpdateProfesor from '../components/updateProfesor';
 import DeleteProfesor from '../components/deleteProfesor';
 import UpdateProject from '../components/updateHistorialAseroria';
 import SearchProfesorList from '../components/SearchProfesorList';
-
+import SearchAJoinP from '../components/searchAJoinP';
 
 const AppRoutes = () => {
   return (
@@ -27,6 +27,7 @@ const AppRoutes = () => {
       <Route path="/deleteProfesor"element={<DeleteProfesor />} />
       <Route path="updateProject" element={<UpdateProject />} />
       <Route path="/obtenerlist" element={<SearchProfesorList/>} />
+      <Route path="/searchAlumnsJoinP" element={<SearchAJoinP />} />
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
