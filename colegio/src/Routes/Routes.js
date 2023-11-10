@@ -13,6 +13,19 @@ import UpdateProject from '../components/updateHistorialAseroria';
 import SearchProfesorList from '../components/SearchProfesorList';
 import SearchAJoinP from '../components/searchAJoinP';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 const AppRoutes = () => {
   return (
     <Routes>
@@ -28,6 +41,18 @@ const AppRoutes = () => {
       <Route path="updateProject" element={<UpdateProject />} />
       <Route path="/obtenerlist" element={<SearchProfesorList/>} />
       <Route path="/searchAlumnsJoinP" element={<SearchAJoinP />} />
+
+
+
+
+
+
+
+
+
+
+
+      
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
