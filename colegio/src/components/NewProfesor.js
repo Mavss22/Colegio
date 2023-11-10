@@ -131,7 +131,7 @@ const NewProfesor = () => {
                             value={dpi}
                             onChange={(e) => {
                                 const inputValue = e.target.value;
-                                if (inputValue.length <= 9) {
+                                if (inputValue.length <= 8) {
                                     setDpi(inputValue);
                                 }
                             }}
