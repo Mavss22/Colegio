@@ -84,4 +84,17 @@ router.post('/guardar', async (req, res) => {
     }
 });
 
+
+router.get('/obtener-relacion/:idProfesor/:idAlumno', async (req, res) => {
+    try {
+        const { idProfesor, idAlumno } = req.params;
+
+        const relaciones = await HistorialAsesoria.obtenerRelacion(idProfesor, idAlumno);
+
+        res.status(200).json(relaciones);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 module.exports = router;
