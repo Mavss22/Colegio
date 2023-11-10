@@ -27,6 +27,24 @@ router.get('/obtener/alumno/:Id_Alumno', async (req, res) => {
     }
 });
 
+router.get('/obtener/profesor/:idProfesor', async (req, res) => {
+    try {
+        const { idProfesor } = req.params;
+        const asesorias = await HistorialAsesoria.findAll({
+            where: {
+                Id_Profesor: idProfesor
+            }
+        });
+        if (!asesorias || asesorias.length === 0) {
+            return res.status(404).json({ message: "No se encontraron asesorías para el profesor especificado" });
+        }
+        res.status(200).json(asesorias);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 router.put('/:Id_Asesoria', async (req, res) => {
     const { Id_Asesoria } = req.params;
     const { Id_Profesor, Id_Alumno, Id_TFC, Fecha_Inic, Fecha_Fin } = req.body;
