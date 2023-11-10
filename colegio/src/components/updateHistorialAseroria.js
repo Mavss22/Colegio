@@ -1,133 +1,103 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Dropdown } from 'primereact/dropdown';
-import { Calendar } from 'primereact/calendar';
-import { InputSwitch } from 'primereact/inputswitch';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import { InputTextarea } from 'primereact/inputtextarea';
 import axios from 'axios';
 import Navbar from './Navbar';
 
 const UpdateProject = () => {
     const [profesores, setProfesores] = useState([]);
     const [alumnos, setAlumnos] = useState([]);
-    const [tfcs, setTfcs] = useState([]);
     const [selectedProfesor, setSelectedProfesor] = useState(null);
     const [selectedAlumno, setSelectedAlumno] = useState(null);
-    const [selectedTfc, setSelectedTfc] = useState(null);
-    const [fechaInicio, setFechaInicio] = useState(null);
-    const [fechaFin, setFechaFin] = useState(null);
-    const [isAlumno, setisAlumno] = useState(false); // Nuevo estado para el switch
+    const [inputFechaFin, setInputFechaFin] = useState('');
+    const [inputFechaInicio, setInputFechaInicio] = useState('');
+    const [selectedProyecto, setSelectedProyecto] = useState(null);
+    const [inputIdAsesoria, setInputIdAsesoria] = useState('');
     const toast = useRef(null);
 
     useEffect(() => {
-        const obtenerProfesores = async () => {
+        const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/v1/profesor/obtener');
-                setProfesores(response.data);
+                const profesoresResponse = await axios.get('http://localhost:3001/api/v1/profesor/obtener');
+                setProfesores(profesoresResponse.data);
+
+                const alumnosResponse = await axios.get('http://localhost:3001/api/v1/alumno/obtener');
+                setAlumnos(alumnosResponse.data);
             } catch (error) {
-                console.error('Error al obtener profesores:', error);
+                console.error('Error al obtener datos:', error);
             }
         };
 
-        const obtenerMaestros = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/api/v1/maestro/obtener'); // Cambia la URL según tu API
-                setAlumnos(response.data);
-            } catch (error) {
-                console.error('Error al obtener maestros:', error);
-            }
-        };
-
-        const obtenerAlumnos = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/api/v1/alumno/obtener');
-                setAlumnos(response.data);
-            } catch (error) {
-                console.error('Error al obtener alumnos:', error);
-            }
-        };
-
-        const obtenerTfcs = async () => {
-            try {
-                const response = await axios.get('http://localhost:3001/api/v1/tfc/obtener');
-                setTfcs(response.data);
-            } catch (error) {
-                console.error('Error al obtener tfcs:', error);
-            }
-        };
-
-        obtenerProfesores();
-        obtenerMaestros(); // Agrega la función para obtener maestros
-        obtenerAlumnos();
-        obtenerTfcs();
+        fetchData();
     }, []);
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
-        if ((!isAlumno && !selectedProfesor) || (isAlumno && !selectedAlumno) || !selectedAlumno || !selectedTfc || !fechaInicio || !fechaFin) {
+        if (!inputFechaFin || !inputFechaInicio) {
             showToast('error', 'Error', 'Completa todos los campos antes de registrar el tema');
             return;
         }
 
         try {
-            const formattedFechaInicio = fechaInicio.toISOString().slice(0, 19).replace("T", " ");
-            const formattedFechaFin = fechaFin.toISOString().slice(0, 19).replace("T", " ");
+            const formattedFechaInicio = new Date(inputFechaInicio).toISOString().slice(0, 19).replace("T", " ");
+            const formattedFechaFin = new Date(inputFechaFin).toISOString().slice(0, 19).replace("T", " ");
 
-            // Utiliza el id correspondiente según si es maestro o profesor
-            const idProfesorAlumno = isAlumno ? selectedAlumno : selectedProfesor;
 
-            const response = await axios.post('http://localhost:3001/api/v1/historialAsesoria/guardar', {
-                Id_Profesor: idProfesorAlumno,
-                Id_Alumno: selectedAlumno,
-                Id_TFC: selectedTfc,
+            const response = await axios.put(`http://localhost:3001/api/v1/historialAsesoria/${inputIdAsesoria}`, {
                 Fecha_Inic: formattedFechaInicio,
                 Fecha_Fin: formattedFechaFin,
             });
 
-            showToast('success', 'Éxito', 'Tema registrado exitosamente');
+            showToast('success', 'Éxito', 'Tema actualizado exitosamente');
             console.log('Datos enviados exitosamente:', response.data);
 
-            setisAlumno(false); 
             setSelectedProfesor(null);
             setSelectedAlumno(null);
-            setSelectedTfc(null);
-            setFechaInicio(null);
-            setFechaFin(null);
+            setInputFechaInicio(null);
+            setInputFechaFin(null);
         } catch (error) {
-            showToast('error', 'Error', 'Error al registrar tema');
+            showToast('error', 'Error', 'Error al actualizar tema');
             console.error('Error al enviar los datos:', error);
+        }
+    };
+
+
+    const buscarRelacion = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3001/api/v1/historialAsesoria/obtener-relacion/${selectedProfesor}/${selectedAlumno}`);
+            if (response.status === 200) {
+                if (response.data.length > 0) {
+                    const idTFC = response.data[0]?.Id_TFC;
+                    const proyectoResponse = await axios.get(`http://localhost:3001/api/v1/tfc/obtener/por/${idTFC}`);
+                    if (proyectoResponse.status === 200) {
+                        setSelectedProyecto(proyectoResponse.data);
+                    } else {
+                        showToast('error', 'Error', 'Error al obtener el proyecto asociado al TFC');
+                    }
+                    setInputFechaFin(response.data[0]?.Fecha_Fin || '');
+                    setInputFechaInicio(response.data[0]?.Fecha_Inic || '');
+                    setInputIdAsesoria(response.data[0]?.Id_Asesoria || '');
+                    showToast('success', 'Éxito', 'Relación encontrada exitosamente');
+                } else {
+                    showToast('error', 'Error', 'No se encontraron datos para la relación');
+                }
+            } else if (response.status === 404 || response.status === 304) {
+                showToast('error', 'Error', 'La relación no fue encontrada o no ha sido modificada');
+            } else {
+                showToast('error', 'Error', `Error al buscar la relación. Estado: ${response.status}`);
+            }
+
+        } catch (error) {
+            showToast('error', 'Error', 'La relación puede no existir');
+            console.error('Error al buscar la relación:', error);
         }
     };
 
     const showToast = (severity, summary, detail) => {
         toast.current.show({ severity, summary, detail });
-    };
-
-    const customProfesorItemTemplate = (option) => {
-        return (
-            <div>
-                <div>{option.Nombre} {option.Apellido}</div>
-            </div>
-        );
-    };
-
-
-    const customAlumnoItemTemplate = (option) => {
-        return (
-            <div>
-                <div>{option.Nombre} {option.Apellido}</div>
-                <div>Carné: {option.Carné}</div>
-            </div>
-        );
-    };
-
-    const customTfcItemTemplate = (option) => {
-        return (
-            <div>
-                <div>{option.Nombre_Tema}</div>
-            </div>
-        );
     };
 
     return (
@@ -136,50 +106,22 @@ const UpdateProject = () => {
             <div className="card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
                 <Toast ref={toast} />
                 <div className="flex flex-column md:flex-row">
-                    <div className="w-full md:w-10 flex flex-column align-items-center justify-content-center gap-5 py-5">
+                    <div className="w-full md:w-10 flex flex-column align-items-center justify-content-center gap-3 py-5">
                         <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                            <label htmlFor="switchMaestroProfesor">Alumno/Profesor</label>
-                            <InputSwitch
-                                id="switchMaestroProfesor"
-                                checked={isAlumno}
-                                onChange={(e) => setisAlumno(e.value)}
+                            <label htmlFor="profesorDropdown">Profesor</label>
+                            <Dropdown
+                                id="profesorDropdown"
+                                value={selectedProfesor}
+                                options={profesores}
+                                optionLabel="Nombre"
+                                optionValue="Id_Profesor"
+                                onChange={(e) => setSelectedProfesor(e.value)}
+                                placeholder="Selecciona un profesor"
+                                showClear
+                                filter
+                                filterPlaceholder="Buscar profesor"
                             />
                         </div>
-                        {isAlumno ? (
-                            <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                                <label htmlFor="alumnoDropdown">Alumno</label>
-                                <Dropdown
-                                    id="alumnoDropdown"
-                                    value={selectedAlumno}
-                                    options={alumnos}
-                                    optionLabel="Nombre"
-                                    optionValue="Id_Alumno"
-                                    onChange={(e) => setSelectedAlumno(e.value)}
-                                    placeholder="Selecciona un alumno"
-                                    showClear
-                                    filter
-                                    filterPlaceholder="Buscar alumno"
-                                    itemTemplate={customAlumnoItemTemplate}
-                                />
-                            </div>
-                        ) : (
-                            <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                                <label htmlFor="profesorDropdown">Profesor</label>
-                                <Dropdown
-                                    id="profesorDropdown"
-                                    value={selectedProfesor}
-                                    options={profesores}
-                                    optionLabel="Nombre"
-                                    optionValue="Id_Profesor"
-                                    onChange={(e) => setSelectedProfesor(e.value)}
-                                    placeholder="Selecciona un profesor"
-                                    showClear
-                                    filter
-                                    filterPlaceholder="Buscar profesor"
-                                    itemTemplate={customProfesorItemTemplate}
-                                />
-                            </div>
-                        )}
 
                         <div className="flex flex-wrap justify-content-center align-items-center gap-2">
                             <label htmlFor="alumnoDropdown">Alumno</label>
@@ -194,48 +136,47 @@ const UpdateProject = () => {
                                 showClear
                                 filter
                                 filterPlaceholder="Buscar alumno"
-                                itemTemplate={customAlumnoItemTemplate}
                             />
                         </div>
 
-                        <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                            <label htmlFor="tfcDropdown">TFC</label>
-                            <Dropdown
-                                id="tfcDropdown"
-                                value={selectedTfc}
-                                options={tfcs}
-                                optionLabel="Nombre_Tema"
-                                optionValue="Id_TFC"
-                                onChange={(e) => setSelectedTfc(e.value)}
-                                placeholder="Selecciona un TFC"
-                                showClear
-                                filter
-                                filterPlaceholder="Buscar TFC"
-                                itemTemplate={customTfcItemTemplate}
-                            />
+                        <div className="flex flex-wrap justify-content-center align-items-center gap-3">
+                            <Button label="Buscar Relación" icon="pi pi-search" onClick={buscarRelacion} />
                         </div>
 
-                        <div className="flex flex-wrap justify-content-center align-items-center gap-2">
+                        <div className="flex flex-wrap justify-content-center align-items-center gap-3">
                             <label htmlFor="fechaInicio">Fecha de Inicio</label>
-                            <Calendar
+                            <input
                                 id="fechaInicio"
-                                value={fechaInicio}
-                                onChange={(e) => setFechaInicio(e.value)}
-                                showIcon
-                                dateFormat="yy-mm-dd"
+                                type="date"
+                                value={inputFechaInicio}
+                                onChange={(e) => setInputFechaInicio(e.target.value)}
+                                style={{ borderRadius: '8px', padding: '8px' }}
+                            />
+                        </div>
+
+                        <div className="flex flex-wrap justify-content-center align-items-center gap-3">
+                            <label htmlFor="fechaFin">Fecha de Fin</label>
+                            <input
+                                id="fechaFin"
+                                type="date"
+                                value={inputFechaFin}
+                                onChange={(e) => setInputFechaFin(e.target.value)}
+                                style={{ borderRadius: '8px', padding: '8px' }}
                             />
                         </div>
 
                         <div className="flex flex-wrap justify-content-center align-items-center gap-2">
-                            <label htmlFor="fechaFin">Fecha de Fin</label>
-                            <Calendar
-                                id="fechaFin"
-                                value={fechaFin}
-                                onChange={(e) => setFechaFin(e.value)}
-                                showIcon
-                                dateFormat="yy-mm-dd"
+                            <label htmlFor="proyectoTextarea">Proyecto</label>
+                            <InputTextarea
+                                id="proyectoTextarea"
+                                value={selectedProyecto ? selectedProyecto.Nombre_Tema : ''}
+                                rows={5}
+                                autoResize
+                                readOnly
+                                style={{ borderRadius: '8px', padding: '8px' }}
                             />
                         </div>
+
                         <Button label="Registrar" icon="pi pi-check" onClick={handleFormSubmit} />
                     </div>
                 </div>

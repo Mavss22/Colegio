@@ -7,7 +7,6 @@ import axios from 'axios';
 import Navbar from './Navbar';
 
 const AssociationProject = () => {
-    const [nombreTema, setNombreTema] = useState('');
     const [profesores, setProfesores] = useState([]);
     const [alumnos, setAlumnos] = useState([]);
     const [tfcs, setTfcs] = useState([]);
@@ -73,7 +72,6 @@ const AssociationProject = () => {
             showToast('success', 'Éxito', 'Tema registrado exitosamente');
             console.log('Datos enviados exitosamente:', response.data);
 
-            setNombreTema('');
             setSelectedProfesor(null);
             setSelectedAlumno(null);
             setSelectedTfc(null);

@@ -11,6 +11,7 @@ static async obtenerRelacion(idProfesor, idAlumno) {
     try {
         const relaciones = await this.findAll({
             attributes: [
+                'Id_Asesoria',
                 'Id_Profesor',
                 'Id_Alumno',
                 'Id_TFC', 
@@ -23,7 +24,7 @@ static async obtenerRelacion(idProfesor, idAlumno) {
                     { Id_Alumno: idAlumno }
                 ]
             },
-            group: ['Id_Profesor', 'Id_Alumno', 'Id_TFC', 'Fecha_Inic', 'Fecha_Fin'],
+            group: ['Id_Asesoria','Id_Profesor', 'Id_Alumno', 'Id_TFC', 'Fecha_Inic', 'Fecha_Fin'],
         });
 
         return relaciones;
