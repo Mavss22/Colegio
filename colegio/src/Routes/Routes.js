@@ -15,8 +15,8 @@ import SearchAJoinP from '../components/searchAJoinP';
 import SearchStudent from '../components/SearchStudent';
 import SearchAlumnoList from '../components/SearchStudentList';
 import NewAlumno from '../components/NewStudent';
-
-
+import UpdateAlumno from '../components/UpdateStudent';
+import DeleteEstudiante from '../components/DeleteStudent';
 
 
 
@@ -44,8 +44,8 @@ const AppRoutes = () => {
       <Route path="/alumnoin" element={<SearchStudent/>} />
       <Route path="/alumnolist" element={<SearchAlumnoList/>}/>
       <Route path="/newA" element={<NewAlumno/>} />
-
-
+      <Route path="/upA" element={<UpdateAlumno/>}/>
+      <Route path="/deleteA" element={<DeleteEstudiante/>}/>
 
 
 
