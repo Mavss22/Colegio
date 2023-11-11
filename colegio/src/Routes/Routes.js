@@ -23,7 +23,7 @@ import DeleteEstudiante from '../components/DeleteStudent';
 
 
 
-
+import ComiteByProfesor from '../components/comitebyP';
 import SearchCjoinP from '../components/searchCJoinP';
 import AssociationPC from '../components/associationPC';
 const AppRoutes = () => {
@@ -52,7 +52,7 @@ const AppRoutes = () => {
 
 
 
-
+      <Route path="/UpdatePandC" element={<ComiteByProfesor />}/>
       <Route path="/searchPandC" element={<SearchCjoinP />} />
       <Route path="/assocPandC" element={<AssociationPC />} />
 
