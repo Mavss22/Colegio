@@ -42,10 +42,7 @@ const AssociationPC = () => {
         const obtenerProfesorDetalle = async () => {
             try {
                 if (selectedProfesor && selectedComite) {
-                    // Resto del código para obtener detalles de alumnos basado en profesor y comité seleccionados
-                    // ...
 
-                    // setDetallesAlumnos(detallesAlumnos);
                 }
             } catch (error) {
                 console.error('Error al obtener detalles de profesor y comité:', error);
@@ -67,21 +64,18 @@ const AssociationPC = () => {
     const handleGuardarClick = async () => {
         try {
             if (selectedProfesor && selectedComite) {
-                // Lógica para guardar los datos
 
-                // Limpiar selecciones después de guardar
                 setSelectedProfesor(null);
                 setSelectedComite(null);
 
-                // Puedes manejar la respuesta según tus necesidades
                 console.log('Guardado exitoso');
 
-                // También puedes mostrar un mensaje de éxito utilizando la biblioteca Toast
+
                 toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Guardado exitoso' });
             }
         } catch (error) {
             console.error('Error al guardar:', error);
-            // Puedes mostrar un mensaje de error utilizando la biblioteca Toast
+
             toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al guardar' });
         }
     };

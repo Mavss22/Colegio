@@ -17,13 +17,6 @@ import SearchAlumnoList from '../components/SearchStudentList';
 import NewAlumno from '../components/NewStudent';
 import UpdateAlumno from '../components/UpdateStudent';
 import DeleteEstudiante from '../components/DeleteStudent';
-
-
-
-
-
-
-
 import SearchCjoinP from '../components/searchCJoinP';
 import AssociationPC from '../components/associationPC';
 const AppRoutes = () => {
@@ -46,13 +39,6 @@ const AppRoutes = () => {
       <Route path="/newA" element={<NewAlumno/>} />
       <Route path="/upA" element={<UpdateAlumno/>}/>
       <Route path="/deleteA" element={<DeleteEstudiante/>}/>
-
-
-
-
-
-
-
       <Route path="/searchPandC" element={<SearchCjoinP />} />
       <Route path="/assocPandC" element={<AssociationPC />} />
 
