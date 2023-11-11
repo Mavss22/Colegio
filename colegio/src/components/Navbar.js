@@ -46,12 +46,11 @@ const Navbar = () => {
   
   const alumnoin = () =>{
     navigate ('/alumnoin');
-  }
+  };
   
   const alumnolist = () => {
     navigate('/alumnolist');
-  }
-
+  };
 
   const searchAJoinP = () => {
     navigate('/searchAlumnsJoinP');
@@ -59,11 +58,11 @@ const Navbar = () => {
 
   const newA = () =>{
     navigate('/newA');
-  }
+  };
 
   const deleteA = () =>{
     navigate ('/deleteA');
-  }
+  };
 
   const upA = () => {
     navigate('/upA');
@@ -71,31 +70,31 @@ const Navbar = () => {
 
   const NewComite = () =>{
     navigate ('/NewComite');
-  }
+  };
 
   const ComiteIndiv = () =>{
     navigate ('/comiteIndiv');
-  }
+  };
 
   const UpComite = () =>{
     navigate ('/UpComite');
-  }
+  };
 
   const DeletComite = () =>{
     navigate ('/DeletComite');
-  }
+  };
   
   const assocPandC = () =>{
     navigate ('/assocPandC');
-  }
+  };
 
   const UpdatePandC = () =>{
     navigate ('/UpdatePandC');
-  }
+  };
 
   const searchPandC = () =>{
     navigate ('/searchPandC');
-  }
+  };
 
   const items = [
     {

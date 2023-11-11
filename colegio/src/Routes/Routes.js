@@ -12,8 +12,8 @@ import DeleteProfesor from '../components/deleteProfesor';
 import UpdateProject from '../components/updateHistorialAseroria';
 import SearchProfesorList from '../components/SearchProfesorList';
 import SearchAJoinP from '../components/searchAJoinP';
-
-
+import SearchStudent from '../components/SearchStudent';
+import SearchAlumnoList from '../components/SearchStudentList';
 
 
 
@@ -41,6 +41,8 @@ const AppRoutes = () => {
       <Route path="updateProject" element={<UpdateProject />} />
       <Route path="/obtenerlist" element={<SearchProfesorList/>} />
       <Route path="/searchAlumnsJoinP" element={<SearchAJoinP />} />
+      <Route path="/alumnoin" element={<SearchStudent/>} />
+      <Route path="/alumnolist" element={<SearchAlumnoList/>}/>
 
 
 
@@ -53,6 +55,9 @@ const AppRoutes = () => {
 
       <Route path="/searchPandC" element={<SearchCjoinP />} />
       <Route path="/assocPandC" element={<AssociationPC />} />
+
+
+
       <Route 
         path="*"
         element={<Navigate to="/" replace />}
