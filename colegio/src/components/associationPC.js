@@ -42,6 +42,7 @@ const AssociationPC = () => {
         const obtenerProfesorDetalle = async () => {
             try {
                 if (selectedProfesor && selectedComite) {
+
                 }
             } catch (error) {
                 console.error('Error al obtener detalles de profesor y comité:', error);
@@ -63,6 +64,7 @@ const AssociationPC = () => {
     const handleGuardarClick = async () => {
         try {
             if (selectedProfesor && selectedComite) {
+
                 setSelectedProfesor(null);
                 setSelectedComite(null);
 
