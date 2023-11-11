@@ -14,7 +14,7 @@ import SearchProfesorList from '../components/SearchProfesorList';
 import SearchAJoinP from '../components/searchAJoinP';
 import SearchStudent from '../components/SearchStudent';
 import SearchAlumnoList from '../components/SearchStudentList';
-
+import NewAlumno from '../components/NewStudent';
 
 
 
@@ -43,7 +43,7 @@ const AppRoutes = () => {
       <Route path="/searchAlumnsJoinP" element={<SearchAJoinP />} />
       <Route path="/alumnoin" element={<SearchStudent/>} />
       <Route path="/alumnolist" element={<SearchAlumnoList/>}/>
-
+      <Route path="/newA" element={<NewAlumno/>} />
 
 
 
