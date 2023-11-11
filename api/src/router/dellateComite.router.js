@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const DetalleComite = require("../model/detalleComite.model");
-
+const detalleComiteService = require('../Service/detallecomiteservice');
 router.get("/obtener", async (req, res) => {
     try {
         const detallesComite = await DetalleComite.findAll();
@@ -103,7 +103,7 @@ router.get("/obtener/por/idprofesor/:idProfesor", async (req, res) => {
 });
 
 
-router.get("/obtener/por/:idComite", async (req, res) => {
+router.get("/obtener/por/id/:idComite", async (req, res) => {
     try {
         const { idComite } = req.params;
 
