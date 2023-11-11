@@ -69,13 +69,10 @@ const AssociationPC = () => {
                 setSelectedComite(null);
 
                 console.log('Guardado exitoso');
-
-
                 toast.current.show({ severity: 'success', summary: 'Éxito', detail: 'Guardado exitoso' });
             }
         } catch (error) {
             console.error('Error al guardar:', error);
-
             toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al guardar' });
         }
     };
